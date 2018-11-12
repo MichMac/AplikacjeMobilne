@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private boolean[] mQuestionAnswered = new boolean[mQuestionBank.length];
     private int mCurrentIndex = 0;
     private int mCorrectAnswers = 0;
+    private int mAnswers = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,7 +100,15 @@ public class MainActivity extends AppCompatActivity {
 
     private void NextQuestion()
     {
-        mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.length;
+
+        //mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.length;
+        if (mCurrentIndex == mQuestionBank.length - 1 ){
+            mCurrentIndex = 0;
+        }
+        else {
+            mCurrentIndex += 1;
+        }
+
     }
 
 
@@ -144,13 +153,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
     private void IsDone(){
-        int Sum = 0;
-        for(Question q : mQuestionBank) {
-            if (q.isAnswered()) {
-                Sum++;
-            }
-        }
-        if (mQuestionBank.length == Sum){
+
+        if (mQuestionBank.length == mAnswers){
             Result();
         }
 
