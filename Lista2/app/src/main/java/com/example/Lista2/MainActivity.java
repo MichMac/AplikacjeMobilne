@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
             checkAnswer (true);
+            mAnswers++;
             NextQuestion();
             updateQuestion();
             IsDone();
@@ -54,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
             checkAnswer(false);
+            mAnswers++;
             NextQuestion();
             updateQuestion();
             IsDone();
