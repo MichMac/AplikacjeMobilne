@@ -1,6 +1,8 @@
 package com.example.Lista2;
 
-public class Question {
+import java.io.Serializable;
+
+public class Question implements Serializable {
     private int mTextResId;
     private boolean mAnswerTrue;
     private boolean mAnswered;

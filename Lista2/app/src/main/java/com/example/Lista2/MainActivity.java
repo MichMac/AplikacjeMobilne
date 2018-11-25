@@ -2,6 +2,7 @@ package com.example.Lista2;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -18,13 +19,17 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton mNextButton;
     private ImageButton mBackButton;
     private TextView mQuestionTextView;
+    private static final String TAG = "MainActivity";
+    private static final String KEY_ARRAY = "my_array";
+    private static final String KEY_INDEX = "index";
+
     private Question[] mQuestionBank = new Question[] {
             new Question(R.string.question_stolica,true),
             new Question(R.string.question_stolica2,false),
             new Question(R.string.question_szczyt,true),
             new Question(R.string.question_rzeka,true)
     };
-    private boolean[] mQuestionAnswered = new boolean[mQuestionBank.length];
+
     private int mCurrentIndex = 0;
     private int mCorrectAnswers = 0;
     private int mAnswers = 0;
@@ -33,6 +38,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+         if (savedInstanceState != null)
+        {
+            mCurrentIndex = savedInstanceState.getInt(KEY_INDEX,0);
+            mQuestionBank = (Question[]) savedInstanceState.getSerializable(KEY_ARRAY);
+        }
 
         mQuestionTextView = (TextView) findViewById(R.id.question_text_view);
         mTrueButton = (Button) findViewById(R.id.b_true);
@@ -40,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
         mNextButton = (ImageButton) findViewById(R.id.b_next);
         mBackButton = (ImageButton) findViewById(R.id.b_back);
         mTrueButton.setOnClickListener(new View.OnClickListener(){
+
+
             @Override
             public void onClick(View v) {
             checkAnswer (true);
@@ -89,6 +101,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
         updateQuestion();
+
+
     }
 
 
@@ -167,5 +181,12 @@ public class MainActivity extends AppCompatActivity {
         Toast toast = Toast.makeText(getApplicationContext(), text, Toast.LENGTH_LONG);
         toast.setGravity(Gravity.CENTER, 0, 0);
         toast.show();
+    }
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        Log.i(TAG, "onSaveInstanceState");
+        savedInstanceState.putInt(KEY_INDEX, mCurrentIndex);
+        savedInstanceState.putSerializable(KEY_ARRAY, mQuestionBank);
     }
 }
