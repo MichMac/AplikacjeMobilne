@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Lista4</string>
+    <string name="true_button">Prawda</string>
+    <string name="false_button">Fałsz</string>
+    <string name="next_button">Następne pytanie</string>
+    <string name="back_button">Poprzednie pytanie</string>
+    <string name="cheat_button">Cheat</string>
+    <string name="judgment_toast">Cheating is wrong.</string>
+    <string name="cheat_textview">Czy napewno chcesz zobaczyć poprawną odpowiedź?</string>
+    <string name="correct_toast">Correct!</string>
+    <string name="incorrect_toast">Incorrect!</string>
+    <string name="question_stolica">Czy Warszawa jest stolicą Polski?</string>
+    <string name="question_stolica2">Czy Gdańsk jest stolicą Dolnego Śląska?</string>
+    <string name="question_szczyt">Czy Śnieżka jest najwyższym szczytem Karkonoszy?</string>
+    <string name="question_rzeka">Czy Wisła płynie przez Warszawe?</string>
+</resources>
+
